@@ -1,0 +1,39 @@
+<script>
+  function onSumbit() {
+    var url = encodeURIComponent(document.querySelector('#url').value)
+    var selector = encodeURIComponent(document.querySelector('#selector').value)
+    var json = encodeURIComponent(document.querySelector('#json').checked || '')
+    var markdown = encodeURIComponent(document.querySelector('#markdown').checked || '')
+
+    document.location = './cheerio?url=' + url
+      + '&selector=' + selector
+      + (json ? '&json=' + json : '')
+      + (markdown ? '&markdown=' + markdown : '')
+  }
+</script>
+
+<style>
+  label {
+    display: inline-block;
+    width: 5em;
+  }
+</style>
+
+div.field
+  label -- URL:
+  input#url
+  br
+
+  label -- Selector:
+  input#selector
+  br
+
+  label -- JSON:
+  input#json type="checkbox"
+  br
+
+  label -- Markdown
+  input#markdown type="checkbox"
+  br
+
+button.example-button onclick='onSumbit()' -- Scrape!
